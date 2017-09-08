@@ -13,9 +13,9 @@ var span = document.getElementsByClassName("close")[0];
 // }
 
 // When the user clicks on <span> (x), close the modal
-// span.onclick = function () {
-//   modal.style.display = "none";
-// }
+span.onclick = function () {
+  modal.style.display = "none";
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -30,7 +30,9 @@ var about = document.querySelector("#about"),
   blog = document.querySelector("#blog"),
   home = document.querySelector("#home"),
   skills = document.querySelector("#skills"),
-  modal_content = document.querySelector("#modal_content");
+  modal_content = document.querySelector("#modal_content"),
+  per_blog = document.querySelectorAll(".blog_readMore");
+
 about.onclick = function () {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'animateleft';
@@ -46,6 +48,15 @@ blog.onclick = function () {
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
   setTimeout(function () {
     document.getElementById("main_body").innerHTML = str_blog;
+    modal.style.display = "block";
+  }, 50);
+}
+function goPost(post) {
+  modal.style.display = "none";
+  modal_content.style['animation-name'] = 'bounceIn';
+  modal_content.style['-webkit-animation-name'] = 'bounceIn';
+  setTimeout(function () {
+    document.getElementById("main_body").innerHTML = str_per_blog;
     modal.style.display = "block";
   }, 50);
 }

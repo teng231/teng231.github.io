@@ -625,7 +625,7 @@ body{
   position: relative;
   background-attachment: fixed;
   background-size: cover;
-  width: 100%;
+  width: 95%;
 }
 .blog_container{
   position: absolute;
@@ -661,4 +661,33 @@ a.blog_readMore:hover{
   color: rgba(255, 255, 255, 0.62);
   background: rgba(0, 0, 0, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.62);
+}
+.per_blog{
+  height: 200px;
+  width: 100%;
+}
+.per_title{
+  top:53%;
+  color:black;
+  left: 5px;
+}
+.blog_post{
+  position: absolute;
+  top:65%;
+  width:85%;
+  line-height: 2.3em;
+  text-align: left;
+}
+.blog_post{
+  position: absolute;
+  top:65%;
+  width:85%;
+  line-height: 2.3em;
+  text-align: left;
+  margin-bottom: 50px;
+}
+.per_share{
+  position: absolute;
+  height: 100px;
+  bottom: 10px;
 }
