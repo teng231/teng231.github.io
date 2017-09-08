@@ -72,6 +72,8 @@ about.onclick = function () {
   modal_content.style['animation-name'] = 'animateleft';
   modal_content.style['-webkit-animation-name'] = 'animateleft';
   setTimeout(function () {
+    document.title = "About me - Nguyễn Mạnh Tể";
+    document.querySelector('meta[name="description"]')['content'] = "About me - Nguyễn Mạnh Tể"
     document.getElementById("main_body").innerHTML = str_about;
     modal.style.display = "block";
   }, 50);
@@ -81,6 +83,8 @@ blog.onclick = function () {
   modal_content.style['animation-name'] = 'bounceIn';
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
   loadXMLDoc(node, (data) => {
+    document.title = "Blog - Nguyễn Mạnh Tể";
+    document.querySelector('meta[name="description"]')['content'] = "Blog - Nguyễn Mạnh Tể"
     var per_log = '<div class="block_main" style="background-image: url('
       + '\'{{link}}\'); "><div class="blog_big_text" >'
       + '{{title}}</div><a href= "#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
@@ -113,7 +117,9 @@ function goPost(post) {
         .replace("{{link}}", data.link)
         .replace("{{title}}", data.title)
         .replace(/\{\{tag\}\}/g, data.tag);
+    document.querySelector('meta[name="description"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể"
     document.querySelector('meta[property="og:image"]')['content'] = data.link;
+
     modal.style.display = "block";
   })
 }
@@ -125,6 +131,7 @@ contact.onclick = function () {
   modal_content.style['animation-name'] = 'animateright';
   modal_content.style['-webkit-animation-name'] = 'animateright';
   setTimeout(function () {
+    document.title = "Contact me - Nguyễn Mạnh Tể";
     document.getElementById("main_body").innerHTML = str_contact;
     modal.style.display = "block";
   }, 50);
@@ -134,6 +141,8 @@ skills.onclick = function () {
   modal_content.style['animation-name'] = 'animatetop';
   modal_content.style['-webkit-animation-name'] = 'animatetop';
   setTimeout(function () {
+    document.title = "Skills - Nguyễn Mạnh Tể";
+    document.querySelector('meta[name="description"]')['content'] = "Skills - Nguyễn Mạnh Tể"
     document.getElementById("main_body").innerHTML = str_skills;
     modal.style.display = "block";
   }, 50);
