@@ -104,7 +104,14 @@ js và css3 only -->
       </div>
     </div>
   </div>
-  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var src = "js/main.js?t=" + Date.now();
+      var s = document.createElement('script');
+      s.setAttribute('src', src);
+      document.body.appendChild(s);
+    })();
+  </script>
 </body>
 
 </html>
