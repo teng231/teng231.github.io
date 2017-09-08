@@ -686,6 +686,12 @@ a.blog_readMore:hover{
   text-align: left;
   margin-bottom: 50px;
 }
+.blog_time{
+  position: absolute;
+  background: black;
+  color: #fff;
+}
+
 .per_share{
   position: absolute;
   height: 100px;

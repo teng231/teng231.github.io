@@ -86,15 +86,19 @@ blog.onclick = function () {
     document.title = "Blog - Nguyễn Mạnh Tể";
     document.querySelector('meta[name="description"]')['content'] = "Blog - Nguyễn Mạnh Tể"
     var per_log = '<div class="block_main" style="background-image: url('
-      + '\'{{link}}\'); "><div class="blog_big_text" >'
+      + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text" >'
       + '{{title}}</div><a href= "#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
-
+    //02:87 10/10/2017
     var posts = JSON.parse(data), str_post = "";
 
     for (var i = 0; i < posts.length; i++) {
+      var dateCreate = new Date(posts[i].dateCreate), h, d;
+      d = dateCreate.toISOString().slice(0, 10);
+      h = dateCreate.getHours() + " : " + dateCreate.getMinutes();
       str_post += per_log.replace("{{link}}", posts[i].link)
         .replace(/\{\{_id\}\}/g, posts[i]._id)
-        .replace("{{title}}", posts[i].title);
+        .replace("{{title}}", posts[i].title)
+        .replace("{{time}}", h + " " + d);
     }
 
     setTimeout(function () {
