@@ -1,6 +1,40 @@
 // Get the modal
 var modal = document.getElementById('myModal');
 
+window.onload = function () {
+  var str = window.location.href;
+  var spliter = str.split("#");
+  if (spliter.length !== 2 || spliter[1] === "") {
+    modal.style.display = "none";
+  } else {
+    goPost(spliter[1]);
+  }
+}
+
+// const node = "http://localhost:3001/api/blog";
+const node = "https://baseserver.herokuapp.com/api/blog";
+function loadXMLDoc(url, cb) {
+  var xmlhttp;
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for older browsers
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      cb(this.responseText);
+    }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+}
+
+// loadXMLDoc(node, (data) => {
+//   var data22 = JSON.parse(data);
+//   debugger
+// })
+
 // Get the button that opens the modal
 var btn = document.getElementById("blog");
 
@@ -46,19 +80,40 @@ blog.onclick = function () {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'bounceIn';
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
-  setTimeout(function () {
-    document.getElementById("main_body").innerHTML = str_blog;
-    modal.style.display = "block";
-  }, 50);
+  loadXMLDoc(node, (data) => {
+    var per_log = '<div class="block_main" style="background-image: url('
+      + '\'{{link}}\'); "><div class="blog_big_text" >'
+      + '{{title}}</div><a href= "#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
+
+    var posts = JSON.parse(data), str_post = "";
+
+    for (var i = 0; i < posts.length; i++) {
+      str_post += per_log.replace("{{link}}", posts[i].link)
+        .replace(/\{\{_id\}\}/g, posts[i]._id)
+        .replace("{{title}}", posts[i].title);
+    }
+
+    setTimeout(function () {
+
+      // thay thế
+      document.getElementById("main_body").innerHTML = str_blog.replace("{{__template__}}", str_post);
+      modal.style.display = "block";
+    }, 50);
+  })
 }
 function goPost(post) {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'bounceIn';
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
-  setTimeout(function () {
-    document.getElementById("main_body").innerHTML = str_per_blog;
+  loadXMLDoc(node + "?id=" + post, (data) => {
+    var data = JSON.parse(data);
+    document.getElementById("main_body").innerHTML
+      = str_per_blog.replace("{{content}}", data.content)
+        .replace("{{link}}", data.link)
+        .replace("{{title}}", data.title)
+        .replace(/\{\{tag\}\}/g, data.tag)
     modal.style.display = "block";
-  }, 50);
+  })
 }
 home.onclick = function () {
   modal.style.display = "none";
@@ -81,3 +136,4 @@ skills.onclick = function () {
     modal.style.display = "block";
   }, 50);
 }
+
