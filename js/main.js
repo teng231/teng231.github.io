@@ -105,13 +105,15 @@ function goPost(post) {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'bounceIn';
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
+
   loadXMLDoc(node + "?id=" + post, (data) => {
     var data = JSON.parse(data);
     document.getElementById("main_body").innerHTML
       = str_per_blog.replace("{{content}}", data.content)
         .replace("{{link}}", data.link)
         .replace("{{title}}", data.title)
-        .replace(/\{\{tag\}\}/g, data.tag)
+        .replace(/\{\{tag\}\}/g, data.tag);
+    document.querySelector('meta[property="og:image"]')['content'] = data.link;
     modal.style.display = "block";
   })
 }
