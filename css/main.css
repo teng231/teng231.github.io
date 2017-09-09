@@ -646,6 +646,9 @@ body:hover{
   bottom: 30%;
   left: 50%;
   font-size: 2em;
+  
+}
+.big_text_title{
   background-color: rgba(80, 80, 80, 0.58);
 }
 a.blog_readMore{

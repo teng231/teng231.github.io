@@ -1,13 +1,56 @@
 // Get the modal
 var modal = document.getElementById('myModal');
 
+var page = 0;
+var limit = 3;
 window.onload = function () {
   var str = window.location.href;
   var spliter = str.split("#");
-  if (spliter.length !== 2 || spliter[1] === "") {
+  if (spliter.length !== 2 || spliter[1] === "" || spliter[1].length < 10) {
     modal.style.display = "none";
-  } else {
+  }
+  else {
     goPost(spliter[1]);
+  }
+}
+var element = document.getElementById('main_body');
+
+function blogProcess(data) {
+  var per_log = '<div class="block_main" style="background-image: url('
+    + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text big_text_title" >'
+    + '{{title}}</div><a href= "#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
+  //02:87 10/10/2017
+  var posts = JSON.parse(data), str_post = "";
+
+  for (var i = 0; i < posts.length; i++) {
+    var dateCreate = new Date(posts[i].dateCreate), h, d;
+    d = dateCreate.toISOString().slice(0, 10);
+    h = dateCreate.getHours() + " : " + dateCreate.getMinutes();
+    str_post += per_log.replace("{{link}}", posts[i].link)
+      .replace(/\{\{_id\}\}/g, posts[i]._id)
+      .replace("{{title}}", posts[i].title)
+      .replace("{{time}}", h + " " + d);
+  }
+  return str_post;
+}
+
+
+
+element.onscroll = function () {
+  var a = element.scrollTop, b = element.scrollHeight - element.clientHeight;
+  var str = window.location.href;
+  var spliter = str.split("#");
+  if (spliter.length == 2 && spliter[1] === 'blog') {
+    if (a / b > 0.75) {
+      page++;
+      loadXMLDoc(node + "?limit=" + limit + "&page=" + page, (data) => {
+        document.getElementById("main_body")
+          .getElementsByClassName("blog_container")[0]
+          .insertAdjacentHTML('beforeend', blogProcess(data));
+      })
+    }
+
+
   }
 }
 
@@ -79,32 +122,19 @@ about.onclick = function () {
   }, 50);
 }
 blog.onclick = function () {
+  page = 0;
   modal.style.display = "none";
+  element.innerHTML = "";
   modal_content.style['animation-name'] = 'bounceIn';
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
-  loadXMLDoc(node, (data) => {
+
+  loadXMLDoc(node + "?limit=" + limit + "&page=" + page, (data) => {
     document.title = "Blog - Nguyễn Mạnh Tể";
     document.querySelector('meta[name="description"]')['content'] = "Blog - Nguyễn Mạnh Tể"
-    var per_log = '<div class="block_main" style="background-image: url('
-      + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text" >'
-      + '{{title}}</div><a href= "#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
-    //02:87 10/10/2017
-    var posts = JSON.parse(data), str_post = "";
-
-    for (var i = 0; i < posts.length; i++) {
-      var dateCreate = new Date(posts[i].dateCreate), h, d;
-      d = dateCreate.toISOString().slice(0, 10);
-      h = dateCreate.getHours() + " : " + dateCreate.getMinutes();
-      str_post += per_log.replace("{{link}}", posts[i].link)
-        .replace(/\{\{_id\}\}/g, posts[i]._id)
-        .replace("{{title}}", posts[i].title)
-        .replace("{{time}}", h + " " + d);
-    }
-
+    var str_post = blogProcess(data)
     setTimeout(function () {
-
       // thay thế
-      document.getElementById("main_body").innerHTML = str_blog.replace("{{__template__}}", str_post);
+      document.getElementById("main_body").insertAdjacentHTML('beforeend', str_blog.replace("{{__template__}}", str_post));
       modal.style.display = "block";
     }, 50);
   })
