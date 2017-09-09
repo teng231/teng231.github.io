@@ -9,7 +9,7 @@ var element = document.getElementById('main_body');
 function blogProcess(data) {
   var per_log = '<div class="block_main" style="background-image: url('
     + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text big_text_title" >'
-    + '{{title}}</div><a href= "#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
+    + '{{title}}</div><a href= "#blog#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
   //02:87 10/10/2017
   var posts = JSON.parse(data), str_post = "";
 
@@ -77,7 +77,7 @@ function aboutFn() {
   modal_content.style['-webkit-animation-name'] = 'animateleft';
   setTimeout(function () {
     document.title = "About me - Nguyễn Mạnh Tể";
-    document.querySelector('meta[name="description"]')['content'] = "About me - Nguyễn Mạnh Tể"
+    document.querySelector('meta[name="description"]')['content'] = "About me - Nguyễn Mạnh Tể";
     document.getElementById("main_body").innerHTML = str_about;
     modal.style.display = "block";
   }, 50);
@@ -112,13 +112,24 @@ function goPost(post) {
         .replace("{{link}}", data.link)
         .replace("{{title}}", data.title)
         .replace(/\{\{tag\}\}/g, data.tag);
-    document.querySelector('meta[name="description"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể"
-    document.querySelector('meta[property="og:image"]')['content'] = data.link;
+    document.querySelector('meta[name="description"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể";
+    var x = document.createElement("META");
+    x.setAttribute("property", "og:image");
+    x.setAttribute("content", data.link);
+    document.head.appendChild(x);
+    x = document.createElement("META");
+
+    x.setAttribute("property", "og:title");
+    x.setAttribute("content", "Post " + data.title + " - Nguyễn Mạnh Tể");
+    document.head.appendChild(x);
+    // document.querySelector('meta[property="og:image"]')['content'] = data.link;
+    // document.querySelector('meta[property="og:title"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể";
 
     modal.style.display = "block";
   })
 }
 function homeFn() {
+  document.title = "Home - Nguyễn Mạnh Tể";
   modal.style.display = "none";
 }
 
@@ -144,11 +155,6 @@ function skillsFn() {
     modal.style.display = "block";
   }, 50);
 }
-
-// loadXMLDoc(node, (data) => {
-//   var data22 = JSON.parse(data);
-//   debugger
-// })
 
 
 // Get the <span> element that closes the modal

@@ -10,10 +10,10 @@ window.onclick = function (event) {
 window.onload = function () {
   var str = window.location.href;
   var spliter = str.split("#");
-  if (spliter.length !== 2 || spliter[1] === "") {
+  if (spliter[1] === "") {
     modal.style.display = "none";
   }
-  else if (spliter[1] === "blog") {
+  else if (spliter.length === 2 && spliter[1] === "blog") {
     blogFn();
   }
   else if (spliter[1] === "contact") {
@@ -25,8 +25,8 @@ window.onload = function () {
   else if (spliter[1] === "skills") {
     skillsFn();
   }
-  else {
-    goPost(spliter[1]);
+  else if (spliter.length == 3) {
+    goPost(spliter[2]);
   }
 }
 about.onclick = aboutFn;
