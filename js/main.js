@@ -3,16 +3,7 @@ var modal = document.getElementById('myModal');
 
 var page = 0;
 var limit = 3;
-window.onload = function () {
-  var str = window.location.href;
-  var spliter = str.split("#");
-  if (spliter.length !== 2 || spliter[1] === "" || spliter[1].length < 10) {
-    modal.style.display = "none";
-  }
-  else {
-    goPost(spliter[1]);
-  }
-}
+
 var element = document.getElementById('main_body');
 
 function blogProcess(data) {
@@ -72,36 +63,6 @@ function loadXMLDoc(url, cb) {
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }
-
-// loadXMLDoc(node, (data) => {
-//   var data22 = JSON.parse(data);
-//   debugger
-// })
-
-// Get the button that opens the modal
-var btn = document.getElementById("blog");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-// btn.onclick = function () {
-//   modal.style.display = "block";
-// }
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-// click cho nav
-
 var about = document.querySelector("#about"),
   contact = document.querySelector("#contact"),
   blog = document.querySelector("#blog"),
@@ -110,7 +71,7 @@ var about = document.querySelector("#about"),
   modal_content = document.querySelector("#modal_content"),
   per_blog = document.querySelectorAll(".blog_readMore");
 
-about.onclick = function () {
+function aboutFn() {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'animateleft';
   modal_content.style['-webkit-animation-name'] = 'animateleft';
@@ -121,7 +82,7 @@ about.onclick = function () {
     modal.style.display = "block";
   }, 50);
 }
-blog.onclick = function () {
+function blogFn() {
   page = 0;
   modal.style.display = "none";
   element.innerHTML = "";
@@ -157,10 +118,11 @@ function goPost(post) {
     modal.style.display = "block";
   })
 }
-home.onclick = function () {
+function homeFn() {
   modal.style.display = "none";
 }
-contact.onclick = function () {
+
+function contactFn() {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'animateright';
   modal_content.style['-webkit-animation-name'] = 'animateright';
@@ -170,7 +132,8 @@ contact.onclick = function () {
     modal.style.display = "block";
   }, 50);
 }
-skills.onclick = function () {
+
+function skillsFn() {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'animatetop';
   modal_content.style['-webkit-animation-name'] = 'animatetop';
@@ -182,3 +145,16 @@ skills.onclick = function () {
   }, 50);
 }
 
+// loadXMLDoc(node, (data) => {
+//   var data22 = JSON.parse(data);
+//   debugger
+// })
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+}

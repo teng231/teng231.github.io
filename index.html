@@ -106,8 +106,12 @@ js và css3 only -->
   <script>
     (function () {
       var src = "js/main.js?t=" + Date.now();
+      var src2 = "js/jswindow.js?t=" + Date.now();
       var s = document.createElement('script');
       s.setAttribute('src', src);
+      document.body.appendChild(s);
+      s = document.createElement('script');
+      s.setAttribute('src', src2);
       document.body.appendChild(s);
     })();
     function rand(num) {

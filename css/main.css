@@ -673,21 +673,30 @@ a.blog_readMore:hover{
   border: 1px solid rgba(255, 255, 255, 0.62);
 }
 .per_blog{
-  height: 200px;
+  height: 300px;
   width: 100%;
+  background-size: cover;
+}
+.per_gradien{
+  height: 300px;
+  width: 100%;
+  background-image: -webkit-linear-gradient(top, rgba(245, 245, 245, 0.25), rgba(0, 0, 0, 0.85))
 }
 .per_title{
-  top:53%;
-  color:black;
+  top:55%;
+  color:rgba(247, 245, 245, 0.88);
   left: 5px;
+  font-family: 'Cormorant Upright', serif !important;
 }
+
 .blog_post{
   position: absolute;
-  top:65%;
+  top:75%;
   width:85%;
   line-height: 2.3em;
   text-align: left;
 }
+
 .blog_time{
   position: absolute;
   background: black;
