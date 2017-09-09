@@ -110,6 +110,32 @@ js và css3 only -->
       s.setAttribute('src', src);
       document.body.appendChild(s);
     })();
+    function rand(num) {
+      return Math.floor(Math.random() * num) + 0;
+    }
+    var mang1 =
+      ['bigstock-desktop-mix-on-a.jpg'
+        , 'office-desk-background-2.jpg'
+        , 'banner3.jpg'
+        , 'banner2.jpg'
+        , 'banner1.jpg'
+      ],//
+      mang2 = [
+        'office-supplies-with-computer-on-white-desk_1357-241.jpg'
+        , 'home_bg.jpg'
+        , 'paper-pencil-work-touch-business-usb_1421-592.jpg'
+        , 'frame-with-office-equipment-on-white-desk_1357-235.jpg'
+      ]
+    document.getElementsByTagName("body")[0].style
+      = "background-image: url('img/"
+      + mang1[rand(mang1.length)] + "');"
+    document.body.onmouseenter = function () {
+      setTimeout(function () {
+        document.getElementsByTagName("body")[0].style =
+          "background-image: url('img/"
+          + mang2[rand(mang2.length)] + "');"
+      }, 500);
+    }
   </script>
 </body>
 

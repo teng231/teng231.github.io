@@ -20,9 +20,15 @@ font-family: 'Cormorant Garamond', serif;
 font-family: 'Sedgwick Ave Display', cursive; */
 
 body{
-  background-image: url('../img/home_bg.jpg');
+  background-image: url('../img/banner3.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  transition: 2s;
+  -webkit-transition: 2s;
+}
+
+body:hover{
+  background-image: url('../img/67l-qujb14w-fabian-irsara.jpg');
 }
 
 .main_page{
@@ -640,6 +646,7 @@ body{
   bottom: 30%;
   left: 50%;
   font-size: 2em;
+  background-color: rgba(80, 80, 80, 0.58);
 }
 a.blog_readMore{
   height: 40px;
@@ -677,14 +684,6 @@ a.blog_readMore:hover{
   width:85%;
   line-height: 2.3em;
   text-align: left;
-}
-.blog_post{
-  position: absolute;
-  top:65%;
-  width:85%;
-  line-height: 2.3em;
-  text-align: left;
-  margin-bottom: 50px;
 }
 .blog_time{
   position: absolute;
