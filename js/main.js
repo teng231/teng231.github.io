@@ -5,7 +5,7 @@ var page = 0;
 var limit = 3;
 
 var element = document.getElementById('main_body');
-
+var loader = document.getElementsByClassName("loader")[0];
 function blogProcess(data) {
   var per_log = '<div class="block_main" style="background-image: url('
     + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text big_text_title" >'
@@ -88,8 +88,9 @@ function blogFn() {
   element.innerHTML = "";
   modal_content.style['animation-name'] = 'bounceIn';
   modal_content.style['-webkit-animation-name'] = 'bounceIn';
-
+  loader.setAttribute('style', 'display:block;');
   loadXMLDoc(node + "?limit=" + limit + "&page=" + page, (data) => {
+    loader.setAttribute('style', 'display:none;');
     document.title = "Blog - Nguyễn Mạnh Tể";
     document.querySelector('meta[name="description"]')['content'] = "Blog - Nguyễn Mạnh Tể"
     var str_post = blogProcess(data)
