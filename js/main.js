@@ -112,7 +112,8 @@ function goPost(post) {
       = str_per_blog.replace("{{content}}", data.content)
         .replace("{{link}}", data.link)
         .replace("{{title}}", data.title)
-        .replace(/\{\{tag\}\}/g, data.tag);
+        .replace(/\{\{tag\}\}/g, data.tag)
+        .replace("{{href}}", location.href);
     document.querySelector('meta[name="description"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể";
     var x = document.createElement("META");
     x.setAttribute("property", "og:image");
