@@ -34,7 +34,7 @@ js và css3 only -->
     </div>
 
     <!-- nav bar -->
-    <div class="main_nav">
+    <nav class="main_nav">
       <ul>
         <li><a href="#" id="home">
             <i class="fa fa-home" aria-hidden="true"></i>
@@ -57,10 +57,10 @@ js và css3 only -->
             <span>Contact</span>
         </a></li>
       </ul>
-    </div>
+    </nav>
     <!-- end nav bar -->
     <!-- content page -->
-    <div class="main_content">
+    <section class="main_content">
 
       <div class="cv_name">
         <div>Nguyễn Mạnh Tể</div>
@@ -76,13 +76,9 @@ js và css3 only -->
         <li><a href="#" class="hire">Hire me</a></li>
         <li><a href="pdf/Nguyễn Mạnh Tể - Developer.pdf" target="_blank" class="hire">Download My CV</a></li>
       </ul>
-    </div>
-    <div class="right_bar">
-      <h2>Fri</h2>
-      <h2>8</h2>
-      <h2>2017</h2>
-    </div>
-
+    </section>
+    <div class="right_bar"></div>
+    <div class="right_clock"></div>
     <div class="right_social">
       <a href="http://fb.com/0.anhsang.0" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
       <a href="https://github.com/my0sot1s" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
@@ -120,32 +116,6 @@ js và css3 only -->
       s.setAttribute('src', src2);
       document.body.appendChild(s);
     })();
-    function rand(num) {
-      return Math.floor(Math.random() * num) + 0;
-    }
-    var mang1 =
-      ['bigstock-desktop-mix-on-a.jpg'
-        , 'office-desk-background-2.jpg'
-        , 'banner3.jpg'
-        , 'banner2.jpg'
-        , 'banner1.jpg'
-      ],//
-      mang2 = [
-        'office-supplies-with-computer-on-white-desk_1357-241.jpg'
-        , 'home_bg.jpg'
-        , 'paper-pencil-work-touch-business-usb_1421-592.jpg'
-        , 'frame-with-office-equipment-on-white-desk_1357-235.jpg'
-      ]
-    document.getElementsByTagName("body")[0].style
-      = "background-image: url('img/"
-      + mang1[rand(mang1.length)] + "');"
-    document.body.onmouseenter = function () {
-      setTimeout(function () {
-        document.getElementsByTagName("body")[0].style =
-          "background-image: url('img/"
-          + mang2[rand(mang2.length)] + "');"
-      }, 500);
-    }
   </script>
 </body>
 

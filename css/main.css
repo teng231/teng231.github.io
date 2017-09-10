@@ -592,10 +592,27 @@ body:hover{
   color: rgba(255, 255, 255, 0.67);
   text-align: center;
   padding: 3px;
+  font-size: 1.4em;
+}
+.right_bar h2:nth-child(1){
+  font-size: 1.0em;
 }
 .right_bar h2:nth-child(2){
- font-size: 1.9em;
+ font-size: 3.5em;
 }
+.right_clock{
+  position: absolute;
+  top: 160px;
+  right: 20px;
+  border: 1px solid #eee;
+}
+.right_clock h2{
+  display: block;
+  color: rgba(255, 255, 255, 0.67);
+  text-align: center;
+  padding: 3px;
+}
+
 
 .right_social{
   position: absolute;
