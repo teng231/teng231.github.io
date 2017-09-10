@@ -126,8 +126,6 @@ function goPost(post) {
     document.head.appendChild(x);
     // document.querySelector('meta[property="og:image"]')['content'] = data.link;
     // document.querySelector('meta[property="og:title"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể";
-    document.getElementsByClassName("modal-footer")[0].insertAdjacentHTML('beforeend',
-      '<div class="fb-comments" data-href="' + location.href + '" data-numposts="5"></div>');
     modal.style.display = "block";
   })
 }

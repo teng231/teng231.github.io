@@ -709,8 +709,8 @@ a.blog_readMore:hover{
 }
 
 .blog_post{
-  position: absolute;
-  top:75%;
+  /* position: absolute; */
+  /* top:75%; */
   width:90%;
   line-height: 2.3em;
   text-align: left;
@@ -727,7 +727,9 @@ a.blog_readMore:hover{
   height: 100px;
   bottom: 10px;
 }
-
+.end-post{
+  padding: 3px;
+}
 
 /* loader code pen */
 
