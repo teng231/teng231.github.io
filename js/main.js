@@ -127,6 +127,14 @@ function goPost(post) {
     // document.querySelector('meta[property="og:image"]')['content'] = data.link;
     // document.querySelector('meta[property="og:title"]')['content'] = "Post " + data.title + " - Nguyễn Mạnh Tể";
     modal.style.display = "block";
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=125391211209683";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   })
 }
 function homeFn() {
