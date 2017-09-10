@@ -196,8 +196,8 @@ body:hover{
   left: 0;
   top: 0;
   margin-left: 8%;
-  width: 85%; /* Full width */
-  height: 96%; /* Full height */
+  width: 83%; /* Full width */
+  height: 97%; /* Full height */
   overflow: hidden; /* Enable scroll if needed */
   font-family: 'Cormorant', serif;
 }
@@ -294,9 +294,9 @@ body:hover{
 
 .modal-body {
   padding: 2px 16px;
-  height: 90vh;
+  height: 93%;
   position: relative;
-  padding:20px 20px;
+  /* padding:20px 20px; */
   overflow: scroll;
   width: 100%;
 }
