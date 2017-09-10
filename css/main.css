@@ -39,7 +39,7 @@ body:hover{
 }
 .main_nav{
   position: fixed;
-  width: 7%;
+  width: 6%;
   float: left;
   top:0;
   left: 0;
@@ -87,6 +87,7 @@ body:hover{
   text-align: center;
   display: block;
   padding: 3px;
+  font-size: 0.8em;
 }
 .main_nav ul li a i{
   display: block;
