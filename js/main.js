@@ -255,8 +255,25 @@ setInterval(function () {
   var str, h = _d.getHours(), m = _d.getMinutes(), s = _d.getSeconds();
   h = h < 10 ? "0" + h : h;
   m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
   str = '<h2>' + h + ":" + m + '</h2>'
   dh.innerHTML = str;
   // dh.insertAdjacentHTML("beforeend", str);
 }, 1000);
+
+
+//send an email
+
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+function sendAnEmail() {
+  var name = document.getElementById("input-name").value,
+    email = document.getElementById("input-email").value,
+    subject = document.getElementById("input-subject").value,
+    message = document.getElementById("input-message").value;
+  if (!name || !email || !subject || !message || !validateEmail(email))
+    alert("Có gì đó sai sai hay sao ý!!! ^.^ Email nhớ nhập đúng nhá.");
+  else
+    window.open('mailto:manhte231@gmail.com?subject=' + subject + '&body=' + "Name:" + name + "         \n" + "Message:" + message);
+}
