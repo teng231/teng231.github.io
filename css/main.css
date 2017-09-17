@@ -646,12 +646,18 @@ body:hover{
 /* blog content */
 /* parallax scroll view */
 .block_main{
-  height: 400px;
+  height: 430px;
   position: relative;
   background-attachment: fixed;
   background-size: cover;
   width: 95%;
 }
+
+.blog_main_bar{
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+}
+
 .blog_container{
   position: absolute;
   top:22%;

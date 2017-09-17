@@ -14,7 +14,7 @@ var modal = $('myModal');
 var element = $('main_body');
 var loader = _("loader")[0];
 function blogProcess(data) {
-  var per_log = '<div class="block_main" style="background-image: url('
+  var per_log = '<div class="block_main blog_main_bar" style="background-image: url('
     + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text big_text_title" >'
     + '{{title}}</div><a href= "#blog#{{_id}}" class="blog_readMore" onclick= "goPost(\'{{_id}}\')" > Read more</a></div>';
   //02:87 10/10/2017
