@@ -1,11 +1,18 @@
-// Get the modal
-var modal = document.getElementById('myModal');
 
 var page = 0;
 var limit = 3;
 
-var element = document.getElementById('main_body');
-var loader = document.getElementsByClassName("loader")[0];
+
+function $(id) {
+  return document.getElementById(id);
+}
+function _(cl) {
+  return document.getElementsByClassName(cl);
+}
+// Get the modal  
+var modal = $('myModal');
+var element = $('main_body');
+var loader = _("loader")[0];
 function blogProcess(data) {
   var per_log = '<div class="block_main" style="background-image: url('
     + '\'{{link}}\'); "><div class="blog_time">Time: {{time}}</div><div class="blog_big_text big_text_title" >'
@@ -35,7 +42,7 @@ element.onscroll = function () {
     if (a / b > 0.75) {
       page++;
       loadXMLDoc(node + "?limit=" + limit + "&page=" + page, (data) => {
-        document.getElementById("main_body")
+        $("main_body")
           .getElementsByClassName("blog_container")[0]
           .insertAdjacentHTML('beforeend', blogProcess(data));
       })
@@ -78,7 +85,7 @@ function aboutFn() {
   setTimeout(function () {
     document.title = "About me - Nguyễn Mạnh Tể";
     document.querySelector('meta[name="description"]')['content'] = "About me - Nguyễn Mạnh Tể";
-    document.getElementById("main_body").innerHTML = str_about;
+    $("main_body").innerHTML = str_about;
     modal.style.display = "block";
   }, 50);
 }
@@ -96,7 +103,7 @@ function blogFn() {
     var str_post = blogProcess(data)
     setTimeout(function () {
       // thay thế
-      document.getElementById("main_body").insertAdjacentHTML('beforeend', str_blog.replace("{{__template__}}", str_post));
+      $("main_body").insertAdjacentHTML('beforeend', str_blog.replace("{{__template__}}", str_post));
       modal.style.display = "block";
     }, 50);
   })
@@ -108,7 +115,7 @@ function goPost(post) {
 
   loadXMLDoc(node + "?id=" + post, (data) => {
     var data = JSON.parse(data);
-    document.getElementById("main_body").innerHTML
+    $("main_body").innerHTML
       = str_per_blog.replace("{{content}}", data.content)
         .replace("{{link}}", data.link)
         .replace("{{title}}", data.title)
@@ -149,7 +156,7 @@ function contactFn() {
   modal_content.style['-webkit-animation-name'] = 'animateright';
   setTimeout(function () {
     document.title = "Contact me - Nguyễn Mạnh Tể";
-    document.getElementById("main_body").innerHTML = str_contact;
+    $("main_body").innerHTML = str_contact;
     modal.style.display = "block";
   }, 50);
 }
@@ -161,14 +168,14 @@ function skillsFn() {
   setTimeout(function () {
     document.title = "Skills - Nguyễn Mạnh Tể";
     document.querySelector('meta[name="description"]')['content'] = "Skills - Nguyễn Mạnh Tể"
-    document.getElementById("main_body").innerHTML = str_skills;
+    $("main_body").innerHTML = str_skills;
     modal.style.display = "block";
   }, 50);
 }
 
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = _("close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
@@ -216,32 +223,36 @@ function rand(num) {
   return Math.floor(Math.random() * num) + 0;
 }
 var mang1 =
-  ['bigstock-desktop-mix-on-a.jpg'
-    , 'office-desk-background-2.jpg'
-    , 'banner3.jpg'
-    , 'banner2.jpg'
-    , 'banner1.jpg'
-  ],//
+  ['https://i.imgur.com/QazlcRN.jpg'
+    , "https://i.imgur.com/r0N23i6.jpg"
+    , 'https://i.imgur.com/sZHQbmH.jpg'
+    , "https://i.imgur.com/PeaWGNJ.jpg"],//
   mang2 = [
-    'office-supplies-with-computer-on-white-desk_1357-241.jpg'
-    , 'home_bg.jpg'
-    , 'paper-pencil-work-touch-business-usb_1421-592.jpg'
-    , 'frame-with-office-equipment-on-white-desk_1357-235.jpg'
+    // 'img/home_bg.jpg'
+    , 'https://i.imgur.com/QocBKVY.jpg'
+    , "https://i.imgur.com/ynKObrO.jpg"
+    , "https://i.imgur.com/jlhN5JM.jpg"
+    , "https://i.imgur.com/zdGrMo6.jpg"
+    , 'https://i.imgur.com/r0N23i6.jpg'
+    , 'https://i.imgur.com/yEI61WN.jpg'
+    , 'https://i.imgur.com/tIRq1Nt.jpg'
+    , 'https://i.imgur.com/5p0Rerm.jpg'
+    , 'https://i.imgur.com/14qbH52.jpg'
   ]
 document.getElementsByTagName("body")[0].style
-  = "background-image: url('img/"
-  + mang1[rand(mang1.length)] + "');"
+  = "background-image: url('"
+  + mang1[rand(mang1.length - 1)] + "');"
 document.body.onmouseenter = function () {
   setTimeout(function () {
     document.getElementsByTagName("body")[0].style =
-      "background-image: url('img/"
-      + mang2[rand(mang2.length)] + "');"
+      "background-image: url('"
+      + mang2[rand(mang2.length - 1)] + "');"
   }, 500);
 }
 
 // lịch và đòng hồ
 
-var lich = document.getElementsByClassName('right_bar')[0];
+var lich = _('right_bar')[0];
 
 var _d = new Date();
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -250,7 +261,7 @@ lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getUTCMonth() + '</h2>')
 lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getFullYear() + '</h2>')
 
 //dong ho
-var dh = document.getElementsByClassName('right_clock')[0];
+var dh = _('right_clock')[0];
 setInterval(function () {
   var str, h = _d.getHours(), m = _d.getMinutes(), s = _d.getSeconds();
   h = h < 10 ? "0" + h : h;
@@ -268,10 +279,10 @@ function validateEmail(email) {
   return re.test(email);
 }
 function sendAnEmail() {
-  var name = document.getElementById("input-name").value,
-    email = document.getElementById("input-email").value,
-    subject = document.getElementById("input-subject").value,
-    message = document.getElementById("input-message").value;
+  var name = $("input-name").value,
+    email = $("input-email").value,
+    subject = $("input-subject").value,
+    message = $("input-message").value;
   if (!name || !email || !subject || !message || !validateEmail(email))
     alert("Có gì đó sai sai hay sao ý!!! ^.^ Email nhớ nhập đúng nhá.");
   else
