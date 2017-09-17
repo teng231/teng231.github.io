@@ -82,10 +82,12 @@ function aboutFn() {
   modal.style.display = "none";
   modal_content.style['animation-name'] = 'animateleft';
   modal_content.style['-webkit-animation-name'] = 'animateleft';
+
   setTimeout(function () {
     document.title = "About me - Nguyễn Mạnh Tể";
     document.querySelector('meta[name="description"]')['content'] = "About me - Nguyễn Mạnh Tể";
     $("main_body").innerHTML = str_about;
+    runSlide();
     modal.style.display = "block";
   }, 50);
 }

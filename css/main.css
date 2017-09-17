@@ -20,16 +20,16 @@ font-family: 'Cormorant Garamond', serif;
 font-family: 'Sedgwick Ave Display', cursive; */
 
 body{
-  background-image: url('../img/banner3.jpg');
+  /* background-image: url('../img/banner3.jpg'); */
   background-size: cover;
   background-repeat: no-repeat;
   transition: 2s;
   -webkit-transition: 2s;
 }
 
-body:hover{
+/* body:hover{
   background-image: url('../img/67l-qujb14w-fabian-irsara.jpg');
-}
+} */
 
 .main_page{
   /* position: relative; */
@@ -361,11 +361,10 @@ body:hover{
   border-radius: 4px;
   margin: 0 auto;
 }
-.img_introduce img:nth-child(1){
+/* .img_introduce img:nth-child(1){
   width:280px;
   height:280px;
-  /* flex:1; */
-}
+} */
 .cham_ngon{
   font-family: 'Cormorant', serif;
   width: 90%;

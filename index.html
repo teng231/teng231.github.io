@@ -20,6 +20,7 @@ js và css3 only -->
     rel="stylesheet">
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
   <script src="js/template.js"></script>
+  <link rel="stylesheet" href="css/slideshow.css">
 </head>
 
 <body>
@@ -108,8 +109,11 @@ js và css3 only -->
   <script>
     (function () {
       var src = "js/main.js?t=" + Date.now();
-      var src2 = "js/jswindow.js?t=" + Date.now();
+      var src2 = "js/slideshow.js?t=" + Date.now();
       var s = document.createElement('script');
+      s.setAttribute('src', src2);
+      document.body.appendChild(s);
+      s = document.createElement('script');
       s.setAttribute('src', src);
       document.body.appendChild(s);
     })();
