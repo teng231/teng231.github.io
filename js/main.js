@@ -221,8 +221,12 @@ home.onclick = homeFn;
 contact.onclick = contactFn;
 skills.onclick = skillsFn;
 
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ * Using Math.round() will give you a non-uniform distribution!
+ */
 function rand(num) {
-  return Math.floor(Math.random() * num) + 0;
+  return Math.floor(Math.random() * (num - 0 + 1)) + 0;
 }
 var mang1 =
   ['https://i.imgur.com/QazlcRN.jpg'
