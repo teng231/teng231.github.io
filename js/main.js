@@ -229,21 +229,16 @@ function rand(num) {
   return Math.floor(Math.random() * (num - 0 + 1)) + 0;
 }
 var mang1 =
-  ['https://i.imgur.com/QazlcRN.jpg'
-    , "https://i.imgur.com/r0N23i6.jpg"
-    , 'https://i.imgur.com/sZHQbmH.jpg'
-    , "https://i.imgur.com/PeaWGNJ.jpg"],//
+  ["https://i.imgur.com/CxD4ZNw.jpg", 'img/home_bg.jpg'],//
   mang2 = [
     // 'img/home_bg.jpg'
-    , 'https://i.imgur.com/QocBKVY.jpg'
-    , "https://i.imgur.com/ynKObrO.jpg"
-    , "https://i.imgur.com/jlhN5JM.jpg"
-    , "https://i.imgur.com/zdGrMo6.jpg"
-    , 'https://i.imgur.com/r0N23i6.jpg'
-    , 'https://i.imgur.com/yEI61WN.jpg'
-    , 'https://i.imgur.com/tIRq1Nt.jpg'
-    , 'https://i.imgur.com/5p0Rerm.jpg'
-    , 'https://i.imgur.com/14qbH52.jpg'
+    'https://i.imgur.com/FZZGhEk.jpg'
+    , "https://i.imgur.com/Ks44lpb.jpg"
+    , "https://i.imgur.com/79QJ0Iz.jpg"
+    , "https://i.imgur.com/UyZC2mI.jpg"
+    , 'https://i.imgur.com/zL7SYHl.jpg'
+    , 'https://i.imgur.com/mMdeMF6.jpg'
+    , 'https://i.imgur.com/sZSZeHz.jpg'
   ]
 document.getElementsByTagName("body")[0].style
   = "background-image: url('"
@@ -253,7 +248,7 @@ document.body.onmouseenter = function () {
     document.getElementsByTagName("body")[0].style =
       "background-image: url('"
       + mang2[rand(mang2.length - 1)] + "');"
-  }, 500);
+  }, 1000);
 }
 
 // lịch và đòng hồ
@@ -262,8 +257,10 @@ var lich = _('right_bar')[0];
 
 var _d = new Date();
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 lich.insertAdjacentHTML("beforeend", '<h2>' + days[_d.getDay()] + '</h2>')
-lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getUTCMonth() + '</h2>')
+lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getDate() + '</h2>')
+lich.insertAdjacentHTML("beforeend", '<h2>' + month[_d.getUTCMonth()] + '</h2>')
 lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getFullYear() + '</h2>')
 
 //dong ho
@@ -272,7 +269,8 @@ setInterval(function () {
   var str, h = _d.getHours(), m = _d.getMinutes(), s = _d.getSeconds();
   h = h < 10 ? "0" + h : h;
   m = m < 10 ? "0" + m : m;
-  str = '<h2>' + h + ":" + m + '</h2>'
+  s = s < 10 ? "0" + s : s;
+  str = '<h2>' + h + " : " + m + '</h2>'
   dh.innerHTML = str;
   // dh.insertAdjacentHTML("beforeend", str);
 }, 1000);

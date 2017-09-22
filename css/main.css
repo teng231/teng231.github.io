@@ -594,15 +594,18 @@ body{
   padding: 3px;
   font-size: 1.4em;
 }
-.right_bar h2:nth-child(1){
+.right_bar h2:first-child{
   font-size: 1.0em;
 }
 .right_bar h2:nth-child(2){
- font-size: 3.5em;
+ font-size: 4em;
+}
+.right_bar h2:nth-child(3){
+ font-size: 0.95em;
 }
 .right_clock{
   position: absolute;
-  top: 160px;
+  top: 200px;
   right: 20px;
   border: 1px solid #eee;
 }
@@ -637,6 +640,11 @@ body{
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-iteration-count: infinite;
+}
+.right_social a:first-child i{
+  border: 1px solid rgba(66, 103, 178, 0.75);
+  padding: 1px;
+  border-radius: 5px;
 }
 
 @keyframes bipbip{
