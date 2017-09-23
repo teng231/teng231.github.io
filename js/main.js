@@ -53,7 +53,7 @@ element.onscroll = function () {
 }
 
 // const node = "http://localhost:3001/api/blog";
-const node = "https://baseserver.herokuapp.com/api/blog";
+const node = "https://cms-backend.herokuapp.com/api/blog";
 function loadXMLDoc(url, cb) {
   var xmlhttp;
   if (window.XMLHttpRequest) {
