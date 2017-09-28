@@ -115,18 +115,20 @@ body{
 }
 
 .cv_name div{
-  /* font-family: 'Tangerine', cursive; */
-  /* font-family: 'Dancing Script', cursive; */
+  font-family: 'Dancing Script', cursive;
   /* font-family: 'Cormorant Upright', serif; */
-  font-family: 'Sedgwick Ave Display', cursive;
-  font-size: 2.8em;
-  font-weight: bold;
+  /* font-family: 'Sedgwick Ave Display', cursive; */
+  font-size: 3em;
+  text-shadow: 2px 2px rgba(39, 39, 39, 0.88);
+  /* font-weight: bold; */
   padding-bottom: 5px;
-  color:rgba(130, 125, 125, 0.77);
+  color:rgba(12, 12, 12, 0.89);
 }
 
 .introduce{
-  font-family: 'Cormorant Upright', serif;
+  /* font-family: 'Cormorant Upright', serif; */
+  /* font-family: 'Sedgwick Ave Display', cursive; */
+   font-family: 'Sedgwick Ave Display', cursive;
 }
 .introduce p {
   text-align: right;
@@ -134,7 +136,9 @@ body{
 }
 .main_content h4{
   /* font-family: 'Roboto Slab'; */
+  /* font-family: 'Cormorant Upright', serif; */
   font-family: 'Dancing Script', cursive;
+  text-shadow: 2px 2px rgba(39, 39, 39, 0.88);
   font-size: 1.6em;
   position: absolute;
   font-weight: normal;
@@ -142,20 +146,17 @@ body{
   bottom: 400px;
   width: 65%;
   text-align: right;
-  /* bottom: 360px;
-  right:230px; */
   color:#ffffff;
 }
 .main_content p{
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-  color:rgba(86, 91, 90, 0.65);
+  color:rgba(12, 12, 12, 0.89);
   position: absolute;
   font-size: 1.3em;
   left:200px;
   bottom: 260px;
   width: 65%;
-  /* font-family: 'Tangerine', cursive; */
-  font-family: 'Satisfy', cursive;
+  font-family: 'Tangerine', cursive;
+  /* font-family: 'Satisfy', cursive; */
 }
 .phim_nhan{
   position: absolute;

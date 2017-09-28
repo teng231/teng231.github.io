@@ -229,11 +229,12 @@ function rand(num) {
   return Math.floor(Math.random() * (num - 0 + 1)) + 0;
 }
 var mang1 =
-  ["https://i.imgur.com/CxD4ZNw.jpg", 'img/home_bg.jpg'],//
+  ["https://i.imgur.com/CxD4ZNw.jpg"
+    , 'img/home_bg.jpg'
+    , "https://i.imgur.com/Ks44lpb.jpg"],//
   mang2 = [
     // 'img/home_bg.jpg'
     'https://i.imgur.com/FZZGhEk.jpg'
-    , "https://i.imgur.com/Ks44lpb.jpg"
     , "https://i.imgur.com/79QJ0Iz.jpg"
     , "https://i.imgur.com/UyZC2mI.jpg"
     , 'https://i.imgur.com/zL7SYHl.jpg'
