@@ -3,6 +3,61 @@ var page = 0;
 var limit = 3;
 // const node = "http://localhost:3001/api/blog";
 // const node = "https://cms-backend.herokuapp.com/api/blog";
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function _(cl) {
+  return document.getElementsByClassName(cl);
+}
+
+function _setAnimate(modal, modal_content, name, cb) {
+  modal.style.display = "none";
+  if (typeof cb === "function") cb();
+  modal_content.style['animation-name'] = name;
+  modal_content.style['-webkit-animation-name'] = name;
+}
+
+function _updateHeader(modal, _name, _str, cb) {
+  setTimeout(function () {
+    document.title = _name + " - Nguyễn Mạnh Tể";
+    document.querySelector('meta[name="description"]')['content'] = _name + " - Nguyễn Mạnh Tể";
+    $("main_body").innerHTML = _str;
+    cb()
+    modal.style.display = "block";
+  }, 50);
+}
+
+function _appendHtml(modal, _name, _str, cb) {
+  setTimeout(function () {
+    // thay thế
+    cb();
+    document.title = _name + " - Nguyễn Mạnh Tể";
+    document.querySelector('meta[name="description"]')['content'] = _name + " - Nguyễn Mạnh Tể"
+    $("main_body").insertAdjacentHTML('beforeend', _str);
+
+    modal.style.display = "block";
+  }, 50);
+}
+
+function loadXMLDoc(url, cb) {
+  var xmlhttp;
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    // code for older browsers
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      cb(this.responseText);
+    }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+}
+
 const node_blog_info = "https://kutekiu.herokuapp.com/api/Blog/getBlogInfo"
 const node_blog_per = "https://kutekiu.herokuapp.com/api/Blog/getBlogById"
 
@@ -53,8 +108,6 @@ var about = document.querySelector("#about"),
   blog = document.querySelector("#blog"),
   home = document.querySelector("#home"),
   skills = document.querySelector("#skills"),
-  notes = document.querySelector("#notes"),
-  music = document.querySelector("#music"),
   modal_content = document.querySelector("#modal_content"),
   per_blog = document.querySelectorAll(".blog_readMore");
 
@@ -103,14 +156,6 @@ function homeFn() {
   modal.style.display = "none";
 }
 
-function musicFn() {
-
-  _setAnimate(modal, modal_content, "animateright")
-  _updateHeader(modal, "Musics ", str_music, () => {
-  });
-
-}
-
 
 function contactFn() {
   _setAnimate(modal, modal_content, "animateright")
@@ -125,3 +170,120 @@ function skillsFn() {
 }
 
 
+
+
+// Get the <span> element that closes the modal
+var span = _("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+// click cho nav
+//-------------------------------------------------------------jswindow.js------------------------//
+window.onload = function () {
+  var str = window.location.href;
+  var spliter = str.split("#");
+  if (spliter[1] === "") {
+    modal.style.display = "none";
+  }
+  else if (spliter.length === 2 && spliter[1] === "blog") {
+    blogFn();
+  }
+  else if (spliter[1] === "contact") {
+    contactFn();
+  }
+  else if (spliter[1] === "about") {
+    aboutFn();
+  }
+  else if (spliter[1] === "skills") {
+    skillsFn();
+  }
+  else if (spliter.length == 3) {
+    goPost(spliter[2]);
+  }
+}
+about.onclick = aboutFn;
+blog.onclick = blogFn;
+home.onclick = homeFn;
+contact.onclick = contactFn;
+skills.onclick = skillsFn;
+
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function rand(num) {
+  return Math.floor(Math.random() * (num - 0 + 1)) + 0;
+}
+var mang1 =
+  ["https://i.imgur.com/CxD4ZNw.jpg"
+    , 'img/home_bg.jpg'
+    , "https://i.imgur.com/Ks44lpb.jpg"],//
+  mang2 = [
+    // 'img/home_bg.jpg'
+    'https://i.imgur.com/FZZGhEk.jpg'
+    , "https://i.imgur.com/79QJ0Iz.jpg"
+    , "https://i.imgur.com/UyZC2mI.jpg"
+    , 'https://i.imgur.com/zL7SYHl.jpg'
+    , 'https://i.imgur.com/mMdeMF6.jpg'
+    , 'https://i.imgur.com/sZSZeHz.jpg'
+  ]
+document.getElementsByTagName("body")[0].style
+  = "background-image: url('"
+  + mang1[rand(mang1.length - 1)] + "');"
+document.body.onmouseenter = function () {
+  setTimeout(function () {
+    document.getElementsByTagName("body")[0].style =
+      "background-image: url('"
+      + mang2[rand(mang2.length - 1)] + "');"
+  }, 1000);
+}
+
+// lịch và đòng hồ
+
+var lich = _('right_bar')[0];
+
+var _d = new Date();
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+lich.insertAdjacentHTML("beforeend", '<h2>' + days[_d.getDay()] + '</h2>')
+lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getDate() + '</h2>')
+lich.insertAdjacentHTML("beforeend", '<h2>' + month[_d.getUTCMonth()] + '</h2>')
+lich.insertAdjacentHTML("beforeend", '<h2>' + _d.getFullYear() + '</h2>')
+
+//dong ho
+var dh = _('right_clock')[0];
+setInterval(function () {
+  var str, h = _d.getHours(), m = _d.getMinutes(), s = _d.getSeconds();
+  h = h < 10 ? "0" + h : h; m = m < 10 ? "0" + m : m; s = s < 10 ? "0" + s : s;
+  str = '<h2>' + h + " : " + m + '</h2>'
+  dh.innerHTML = str;
+  // dh.insertAdjacentHTML("beforeend", str);
+}, 1000);
+
+
+//send an email
+
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+function sendAnEmail() {
+  var name = $("input-name").value,
+    email = $("input-email").value,
+    subject = $("input-subject").value,
+    message = $("input-message").value;
+  if (!name || !email || !subject || !message || !validateEmail(email))
+    alert("Có gì đó sai sai hay sao ý!!! ^.^ Email nhớ nhập đúng nhá.");
+  else
+    window.open('mailto:manhte231@gmail.com?subject=' + subject + '&body=' + "Name:" + name + "         \n" + "Message:" + message);
+}
