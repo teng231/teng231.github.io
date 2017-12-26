@@ -115,7 +115,7 @@ body {
 
 .main_content {
   position: relative;
-  margin-left: 8%;
+  margin-left: 5%;
   width: 85%;
   /* background: #eee; */
   height: inherit;
@@ -217,8 +217,8 @@ body {
   margin: 1% auto;
   left: 0;
   top: 0;
-  margin-left: 8%;
-  width: 83%; /* Full width */
+  margin-left: 6.5%;
+  width: 86%; /* Full width */
   height: 97%; /* Full height */
   overflow: hidden; /* Enable scroll if needed */
   font-family: 'Cormorant', serif;
@@ -662,7 +662,7 @@ body {
 .right_bar {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 15px;
   border: 1px solid #eee;
 }
 
@@ -689,7 +689,7 @@ body {
 .right_clock {
   position: absolute;
   top: 200px;
-  right: 20px;
+  right: 15px;
   border: 1px solid #eee;
 }
 
