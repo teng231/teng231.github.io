@@ -46,7 +46,7 @@ body {
 
 .main_nav {
   position: fixed;
-  width: 6%;
+  width: 5%;
   max-width: 72px;
   float: left;
   top: 0;
@@ -217,8 +217,8 @@ body {
   margin: 1% auto;
   left: 0;
   top: 0;
-  margin-left: 6.5%;
-  width: 86%; /* Full width */
+  margin-left: 3%;
+  width: 90.5%; /* Full width */
   height: 97%; /* Full height */
   overflow: hidden; /* Enable scroll if needed */
   font-family: 'Cormorant', serif;
@@ -353,7 +353,7 @@ body {
 }
 
 .modal-body {
-  padding: 2px 16px;
+  padding: 2px 5px;
   height: 93%;
   position: relative;
   /* padding:20px 20px; */
