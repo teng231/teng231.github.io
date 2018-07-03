@@ -141,17 +141,12 @@ body {
   color: rgba(12, 12, 12, 0.89);
 }
 
-.introduce {
-  /* font-family: 'Cormorant Upright', serif; */
-  /* font-family: 'Sedgwick Ave Display', cursive; */
-  font-family: 'Sedgwick Ave Display', cursive;
-}
-
-.introduce p {
-  text-align: right;
+p.introduce {
+    text-align: right;
   margin-top: 30px;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'EB Garamond', serif;
 }
-
 .main_content h4 {
   /* font-family: 'Roboto Slab'; */
   /* font-family: 'Cormorant Upright', serif; */
@@ -174,8 +169,8 @@ body {
   left: 200px;
   bottom: 260px;
   width: 65%;
-  font-family: 'Tangerine', cursive;
-  /* font-family: 'Satisfy', cursive; */
+  /* font-family: 'Tangerine', cursive; */
+  font-family: 'Satisfy', cursive;
 }
 
 .phim_nhan {
@@ -517,6 +512,7 @@ body {
   font-size: 1.3em;
   border-bottom: 1px solid rgba(165, 165, 167, 0.47);
 }
+
 
 .count_table {
   height: 60px;
